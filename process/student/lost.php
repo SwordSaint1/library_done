@@ -3,7 +3,7 @@ include '../conn.php';
  
 $method = $_POST['method'];
 
-if ($method == 'fetch_penalties') {
+if ($method == 'fetch_lost') {
 	$student_id = $_POST['student_id'];
 	$c = 0;
 
@@ -11,10 +11,10 @@ if ($method == 'fetch_penalties') {
 (SELECT sum(datediff('$server_date_only',borrowed_books.due_date) * 10) as penalty 
 FROM book_details 
 LEFT JOIN borrowed_books ON book_details.book_qrcode = borrowed_books.book_qrcode 
-WHERE borrowed_books.status = 'Borrow' GROUP BY borrowed_books.status LIMIT 1) as penalty
+WHERE borrowed_books.status = 'Lost' GROUP BY borrowed_books.status LIMIT 1) as penalty
 FROM book_details LEFT JOIN borrowed_books ON borrowed_books.book_qrcode = book_details.book_qrcode 
-WHERE borrowed_books.status = 'Borrow' AND borrowed_books.due_date < '$server_date_only' 
-AND borrowed_books.borrowers_id = '$student_id' AND borrowed_books.acknowledge_by IS NULL";
+WHERE borrowed_books.status = 'Lost' AND borrowed_books.due_date < '$server_date_only' 
+AND borrowed_books.borrowers_id = '$student_id'";
 	$stmt = $conn->prepare($query);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
@@ -27,6 +27,7 @@ AND borrowed_books.borrowers_id = '$student_id' AND borrowed_books.acknowledge_b
 				echo '<td>'.$j['borrowed_date'].'</td>';
 				echo '<td>'.$j['due_date'].'</td>';
 				echo '<td>'.$j['penalty'].'</td>';
+				echo '<td>For Replacement</td>';
 			echo '</tr>';
 		}
 	}else{

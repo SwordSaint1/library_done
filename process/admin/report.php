@@ -9,7 +9,7 @@ if ($method == 'fetch_report') {
 	
 	$query ="SELECT book_details.id,book_details.acquisition_no,book_details.description,book_details.author,book_details.date_publish,book_details.category,book_details.book_type,book_details.title,book_details.location,book_details.shelf,book_details.book_qty as Existing,
 	(SELECT count(book_details.id) FROM book_details LEFT JOIN borrowed_books ON book_details.book_qrcode = borrowed_books.book_qrcode WHERE borrowed_books.status = 'Borrow' GROUP BY borrowed_books.status LIMIT 1) as BORROWED, (SELECT count(book_details.id) FROM book_details LEFT JOIN borrowed_books ON book_details.book_qrcode = borrowed_books.book_qrcode WHERE borrowed_books.status = 'Lost' GROUP BY borrowed_books.status LIMIT 1) as LOST, book_details.book_qty + count(borrowed_books.status) as total FROM book_details
-	LEFT JOIN borrowed_books ON borrowed_books.book_qrcode = book_details.book_qrcode GROUP BY borrowed_books.book_qrcode,borrowed_books.status,book_details.id,borrowed_books.id";
+	LEFT JOIN borrowed_books ON borrowed_books.book_qrcode = book_details.book_qrcode GROUP BY book_details.book_qrcode,borrowed_books.status";
 	$stmt = $conn->prepare($query);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
@@ -34,7 +34,7 @@ if ($method == 'fetch_report') {
 		}
 	}else{
 			echo '<tr>';
-				echo '<td>No Result</td>';
+				echo '<td colspan="14" style="color:red;">No Result!</td>';
 			echo '<tr>';
 	}
 }

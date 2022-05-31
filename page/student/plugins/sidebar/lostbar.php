@@ -26,7 +26,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-              <li class="nav-item">
+                 <li class="nav-item">
             <a href="announcement.php" class="nav-link">
               <i class="fas fa-bullhorn"></i>
               <p>
@@ -36,7 +36,7 @@
             </a>
           </li>
                <li class="nav-item">
-            <a href="dashboard.php" class="nav-link ">
+            <a href="dashboard.php" class="nav-link">
               <i class="fa fa-list-ul"></i>
               <p>
                Rules 
@@ -45,7 +45,7 @@
             </a>
           </li>
            <li class="nav-item">
-            <a href="how_to_borrow.php" class="nav-link ">
+            <a href="how_to_borrow.php" class="nav-link">
               <i class="fas fa-question"></i>
               <p>
                How to Borrow a Book 
@@ -54,7 +54,7 @@
             </a>
           </li>
             <li class="nav-item">
-            <a href="how_to_return.php" class="nav-link active">
+            <a href="how_to_return.php" class="nav-link">
               <i class="fas fa-question"></i>
               <p>
                How to Return a Book 
@@ -97,16 +97,16 @@
                
               </p>
             </a>
-          </li> 
+          </li>
            <li class="nav-item">
-            <a href="lost.php" class="nav-link">
+            <a href="lost.php" class="nav-link active">
               <i class="fas fa-exclamation"></i>
               <p>
               Lost 
                
               </p>
             </a>
-          </li> 
+          </li>
             <li class="nav-item">
             <a href="student_info.php" class="nav-link">
               <i class="fas fa-address-card"></i>
@@ -115,7 +115,7 @@
                
               </p>
             </a>
-          </li>   
+          </li>    
           </li>  
          <?php include 'logout.php' ;?>
         </ul>

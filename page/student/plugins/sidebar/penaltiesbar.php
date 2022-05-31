@@ -98,6 +98,15 @@
               </p>
             </a>
           </li>
+           <li class="nav-item">
+            <a href="lost.php" class="nav-link">
+              <i class="fas fa-exclamation"></i>
+              <p>
+              Lost 
+               
+              </p>
+            </a>
+          </li> 
             <li class="nav-item">
             <a href="student_info.php" class="nav-link">
               <i class="fas fa-address-card"></i>

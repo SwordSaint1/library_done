@@ -29,12 +29,50 @@ const get_lost_details =(param)=>{
     var borrowers_id = string[4];
     var points = string[5];
     var book_qrcode = string[6];
+    var status = string[7];
+    var borrowers_id = string[8];
 
 document.getElementById('id_lost').value = id;
 document.getElementById('book_title_lost').value = title;
 document.getElementById('description_lost').value = description;
 document.getElementById('due_date_lost').value = due_date;
-document.getElementById('points_lost').value = points;
 document.getElementById('book_qr_lost').value = book_qrcode;
+document.getElementById('status_points_lost').value = status;
+document.getElementById('student_qr_lost').value = borrowers_id;
 }
+
+const replace_book =()=>{
+    var id = document.getElementById('id_lost').value;
+    var title = document.getElementById('book_title_lost').value;
+    var description = document.getElementById('description_lost').value;
+    var due_date = document.getElementById('due_date_lost').value;
+    var book_qrcode = document.getElementById('book_qr_lost').value;
+    var status = document.getElementById('status_points_lost').value;
+    var borrowers_id = document.getElementById('student_qr_lost').value;
+ 
+    $.ajax({
+      url: '../../process/admin/lost_book.php',
+                type: 'POST',
+                cache: false,
+                data:{
+                    method: 'replace_book',
+                    id:id,
+                    title:title,
+                    description:description,
+                    due_date:due_date,
+                    book_qrcode:book_qrcode,
+                    status:status,
+                    borrowers_id:borrowers_id
+                },success:function(response){
+                  if (response == 'success') {
+                    swal('Success','Successfully Replaced!','success');
+                    load_lost_books();
+                  }
+                  else{
+                    swal('Error','Error!','error');       
+                  }
+                }
+  });
+}
+
 </script>

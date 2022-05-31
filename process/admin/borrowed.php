@@ -79,7 +79,7 @@ if ($method == 'recieve_book') {
 					echo 'error';
 				}
 			}elseif($status_points == 'lost'){
-				$lost = "UPDATE borrowed_books SET status = 'lost' WHERE id = '$id'";
+				$lost = "UPDATE borrowed_books SET status = 'lost',returned_date = NULL WHERE id = '$id'";
 				$stmt9 = $conn->prepare($lost);
 				if ($stmt9->execute()) {
 					echo 'success';

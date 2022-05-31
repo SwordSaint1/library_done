@@ -12,16 +12,17 @@
         <input type="hidden" name="" id="id_lost">
         <div class="row">
             <div class="col-6">
-              <label>Student QR Code:</label> <input type="text" name="student_qr_lost" id="student_qr_lost" class="form-control" autocomplete="off">
+              <label>Student QR Code:</label> <input type="text" name="student_qr_lost" id="student_qr_lost" class="form-control" autocomplete="off" disabled>
             </div>
               <div class="col-6">
               <label>Status Points:</label> 
-              <select id="status_points" class="form-control">
+              <select id="status_points_lost" class="form-control" disabled>
                 <option value="">Select Status</option>
                 <option value="ontime">On-Time</option>
                 <option value="overdue">Overdue</option>
                 <option value="lost">Lost</option>
               </select>
+
             </div>
         </div>
         <div class="row">
