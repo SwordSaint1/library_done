@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2022 at 01:56 PM
+-- Generation Time: Jun 01, 2022 at 07:02 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -91,7 +91,7 @@ CREATE TABLE `book_details` (
 --
 
 INSERT INTO `book_details` (`id`, `title`, `description`, `author`, `date_publish`, `category`, `book_type`, `book_qrcode`, `book_qty`, `location`, `shelf`, `acquisition_no`) VALUES
-(8, 'science', 'science101', 'jj', '2022-05-31', 'sample', 'sample', 'science12345jj', '4', 'a', 'a1', '12345'),
+(8, 'science', 'science101', 'jj', '2022-05-31', 'sample', 'sample', 'science12345jj', '5', 'a', 'a1', '12345'),
 (10, 'math', 'math101', 'math', '2022-05-27', 'sample', 'sample', 'mathmath', '3', 'b', 'b', '123');
 
 -- --------------------------------------------------------
@@ -110,16 +110,17 @@ CREATE TABLE `borrowed_books` (
   `status` varchar(20) DEFAULT NULL,
   `verify_by` varchar(50) DEFAULT NULL,
   `acknowledge_by` varchar(50) DEFAULT NULL,
-  `returned_date` varchar(20) DEFAULT NULL
+  `returned_date` varchar(20) DEFAULT NULL,
+  `status_count` varchar(20) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `borrowed_books`
 --
 
-INSERT INTO `borrowed_books` (`id`, `borrowers_id`, `borrowed_by`, `book_qrcode`, `borrowed_date`, `due_date`, `status`, `verify_by`, `acknowledge_by`, `returned_date`) VALUES
-(2, 'jj_student', NULL, 'mathmath', '2022-05-31', '2022-05-31', 'lost', 'jj', 'jj_admin', '2022-05-31'),
-(3, 'jj_student', NULL, 'science12345jj', '2022-05-31', '2022-05-31', 'Borrow', 'jj', NULL, NULL);
+INSERT INTO `borrowed_books` (`id`, `borrowers_id`, `borrowed_by`, `book_qrcode`, `borrowed_date`, `due_date`, `status`, `verify_by`, `acknowledge_by`, `returned_date`, `status_count`) VALUES
+(1, 'jj_student', NULL, 'mathmath', '2022-06-01', '2022-06-01', 'Returned', 'jj', 'jj_admin', '2022-06-01', '0'),
+(2, 'jj_student', NULL, 'mathmath', '2022-06-01', '2022-06-01', 'Returned', 'jj', 'jj_admin', '2022-06-01', '0');
 
 -- --------------------------------------------------------
 
@@ -143,7 +144,7 @@ CREATE TABLE `borrower_details` (
 --
 
 INSERT INTO `borrower_details` (`id`, `borrowers_id`, `full_name`, `gender`, `contact_no`, `course_year`, `qr_id`, `points`) VALUES
-(1, 'jj_student', 'jj', 'Male', '00000', 'bsit', 'jj_student', '36');
+(1, 'jj_student', 'jj', 'Male', '00000', 'bsit', 'jj_student', '46');
 
 -- --------------------------------------------------------
 
@@ -315,7 +316,7 @@ ALTER TABLE `book_details`
 -- AUTO_INCREMENT for table `borrowed_books`
 --
 ALTER TABLE `borrowed_books`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `borrower_details`

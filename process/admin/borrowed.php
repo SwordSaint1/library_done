@@ -45,7 +45,7 @@ if ($method == 'recieve_book') {
 	$stmt = $conn->prepare($check);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
-		$query ="UPDATE borrowed_books SET acknowledge_by = '$acknowledge_by', returned_date = '$recieved_date', status = 'Returned' WHERE id = '$id' AND due_date = '$due_date'";
+		$query ="UPDATE borrowed_books SET acknowledge_by = '$acknowledge_by', returned_date = '$recieved_date', status = 'Returned', status_count = status_count - 1 WHERE id = '$id' AND due_date = '$due_date'";
 		$stmt2 = $conn->prepare($query);
 		if ($stmt2->execute()) {
 
@@ -79,7 +79,7 @@ if ($method == 'recieve_book') {
 					echo 'error';
 				}
 			}elseif($status_points == 'lost'){
-				$lost = "UPDATE borrowed_books SET status = 'lost',returned_date = NULL WHERE id = '$id'";
+				$lost = "UPDATE borrowed_books SET status = 'lost',returned_date = NULL, status_count = 1 WHERE id = '$id'";
 				$stmt9 = $conn->prepare($lost);
 				if ($stmt9->execute()) {
 					echo 'success';

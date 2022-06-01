@@ -16,7 +16,7 @@ const load_report =()=>{
    });
 }
 
-function export_report(table_id, separator = ',') {
+function export_report_list(table_id, separator = ',') {
     // Select rows from table_id
     var rows = document.querySelectorAll('table#' + table_id + ' tr');
     // Construct csv
@@ -33,7 +33,7 @@ function export_report(table_id, separator = ',') {
     }
     var csv_string = csv.join('\n');
     // Download it
-    var filename = 'Report'+ '_' + new Date().toLocaleDateString() + '.csv';
+    var filename = 'Book_Report'+ '_' + new Date().toLocaleDateString() + '.csv';
     var link = document.createElement('a');
     link.style.display = 'none';
     link.setAttribute('target', '_blank');
@@ -42,5 +42,6 @@ function export_report(table_id, separator = ',') {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-}	
+}
+
 </script>

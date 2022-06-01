@@ -28,9 +28,8 @@ header("Expires: 0");
 
 $sep = "\t";
 
-$sql="SELECT book_details.id,book_details.acquisition_no,book_details.description,book_details.author,book_details.date_publish,book_details.category,book_details.book_type,book_details.title,book_details.location,book_details.shelf,book_details.book_qty as Existing,
-    (SELECT count(book_details.id) FROM book_details LEFT JOIN borrowed_books ON book_details.book_qrcode = borrowed_books.book_qrcode WHERE borrowed_books.status = 'Borrow' GROUP BY borrowed_books.status LIMIT 1) as Books_Loaned, (SELECT count(book_details.id) FROM book_details LEFT JOIN borrowed_books ON book_details.book_qrcode = borrowed_books.book_qrcode WHERE borrowed_books.status = 'Lost' GROUP BY borrowed_books.status LIMIT 1) as Books_Lost, book_details.book_qty + count(borrowed_books.status) as Books_Total FROM book_details
-    LEFT JOIN borrowed_books ON borrowed_books.book_qrcode = book_details.book_qrcode GROUP BY borrowed_books.book_qrcode,borrowed_books.status,book_details.id,borrowed_books.id"; 
+$sql="SELECT book_details.acquisition_no,book_details.title,book_details.description,book_details.author,book_details.date_publish,book_details.category,book_details.book_type,book_details.book_qty AS existing,book_details.location,book_details.shelf, borrowed_books.status,borrowed_books.status_count
+    ,(book_details.book_qty + count(borrowed_books.status_count)) AS total_quantity FROM book_details LEFT JOIN borrowed_books ON borrowed_books.book_qrcode = book_details.book_qrcode GROUP BY book_details.book_qrcode"; 
 $resultt = $con->query($sql);
 while ($property = mysqli_fetch_field($resultt)) { //fetch table field name
     echo $property->name."\t";

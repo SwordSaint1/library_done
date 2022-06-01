@@ -39,7 +39,7 @@ if ($method == 'replace_book') {
 	$status = $_POST['status'];
 	$borrowers_id = $_POST['borrowers_id'];
 
-	$query ="UPDATE borrowed_books SET status = 'Returned', returned_date = '$server_date_only' WHERE id = '$id' AND book_qrcode = '$book_qrcode'";
+	$query ="UPDATE borrowed_books SET status = 'Returned', returned_date = '$server_date_only', status_count = status_count - 1 WHERE id = '$id' AND book_qrcode = '$book_qrcode'";
 	$stmt = $conn->prepare($query);
 	if ($stmt->execute()) {
 		$query2 = "UPDATE book_details SET book_qty = book_qty + 1 WHERE book_qrcode = '$book_qrcode'";

@@ -55,13 +55,19 @@
                   </div>
                   <br>
                   <div class="row">
-                    <a href="../../process/admin/export.php" class="btn btn-success" >Export</a>
+                    <div class="col-3">
+                      <a href="../../process/admin/export.php" class="btn btn-success" >Export All</a>
+                    </div>
+                    <div class="col-9">
+                   <p style="text-align:right"><a href="#" class="btn btn-success" onclick="export_report_list('reports')">Export Filter</a></p> 
+                  
+                    </div>
                   </div>
                   <br>
                   <div class="row">
                     <div class="col-12">
                        <div class="card-body table-responsive p-0" style="height: 420px;">
-                <table class="table table-head-fixed text-nowrap table-hover" id="report_data">
+                <table class="table table-head-fixed text-nowrap table-hover" id="reports">
                 <thead style="text-align:center;">
                     <th>#</th>
                     <th>Acquisition No</th>
@@ -71,11 +77,11 @@
                     <th>Date Publish</th>
                     <th>Category</th>
                     <th>Type of Book</th>
-                    <th>Existing</th>
                     <th>Location</th>
                     <th>Shelf</th>
-                    <th>Books Loaned</th>
-                    <th>Books Lost</th> 
+                    <th>Existing</th>
+                    <th>Book Status</th>
+                    <th>Status Count</th>
                     <th>Books Total</th>  
             </thead>
             <tbody id="list_of_reports" style="text-align:center;"></tbody>
