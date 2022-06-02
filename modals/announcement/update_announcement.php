@@ -39,8 +39,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" class="close" data-dismiss="modal" onclick="javascript:window.location.reload()">Close</button>
-        <input type="submit" class="btn btn-primary" name="submit" value="Update">
+        <a href="#" class="btn btn-danger" onclick="delete_announcement()">Delete Annoncement</a>
+        <input type="submit" class="btn btn-secondary" name="submit" value="Update Announcement">
 
       </div>
          </form>

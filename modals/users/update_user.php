@@ -33,7 +33,7 @@
       </div>
       <div class="modal-footer">
         <a href="#" class="btn btn-danger" onclick="delete_user()">Delete User</a>
-        <a href="#" class="btn btn-secondary" onclick="update_user()">Register User</a>
+        <a href="#" class="btn btn-secondary" onclick="update_user()">Update User</a>
       </div>
     </div>
   </div>

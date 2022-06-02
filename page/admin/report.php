@@ -55,12 +55,10 @@
                   </div>
                   <br>
                   <div class="row">
-                    <div class="col-3">
-                      <a href="../../process/admin/export.php" class="btn btn-success" >Export All</a>
-                    </div>
-                    <div class="col-9">
-                   <p style="text-align:right"><a href="#" class="btn btn-success" onclick="export_report_list('reports')">Export Filter</a></p> 
-                  
+                    <div class="col-12">
+                       <a href="#" class="btn btn-secondary" onclick="export_report_list('reports')">Export Filter</a>
+                      <a href="../../process/admin/export.php" class="btn btn-success" >Export All</a> 
+                     
                     </div>
                   </div>
                   <br>
@@ -70,7 +68,7 @@
                 <table class="table table-head-fixed text-nowrap table-hover" id="reports">
                 <thead style="text-align:center;">
                     <th>#</th>
-                    <th>Acquisition No</th>
+                    <th>Accession No</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Author</th>

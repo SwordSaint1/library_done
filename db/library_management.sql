@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2022 at 07:02 AM
+-- Generation Time: Jun 02, 2022 at 05:59 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -40,7 +40,6 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `file_name`, `announcement_description`, `date_announce`, `image`) VALUES
-(8, 'UPLOAD-GIN.JPG-20220530-867505-629459d973cbc.jpg', 'mami', '2022-05-30', 'upload/UPLOAD-GIN.JPG-20220530-867505-629459d973cbc.jpg'),
 (9, 'UPLOAD-LOGO.PNG-20220527-140205-6290a35660e07.png', 'punyeta', '2022-05-27', 'upload/UPLOAD-LOGO.PNG-20220527-140205-6290a35660e07.png'),
 (10, 'UPLOAD-LOGO.PNG-20220527-442916-6290a366995ec.png', 'punyeta', '2022-05-27', 'upload/UPLOAD-LOGO.PNG-20220527-442916-6290a366995ec.png');
 
@@ -92,7 +91,7 @@ CREATE TABLE `book_details` (
 
 INSERT INTO `book_details` (`id`, `title`, `description`, `author`, `date_publish`, `category`, `book_type`, `book_qrcode`, `book_qty`, `location`, `shelf`, `acquisition_no`) VALUES
 (8, 'science', 'science101', 'jj', '2022-05-31', 'sample', 'sample', 'science12345jj', '5', 'a', 'a1', '12345'),
-(10, 'math', 'math101', 'math', '2022-05-27', 'sample', 'sample', 'mathmath', '3', 'b', 'b', '123');
+(10, 'math', 'math101', 'math', '2022-05-27', 'sample', 'sample', 'mathmath', '2', 'b', 'b', '123');
 
 -- --------------------------------------------------------
 
@@ -119,8 +118,8 @@ CREATE TABLE `borrowed_books` (
 --
 
 INSERT INTO `borrowed_books` (`id`, `borrowers_id`, `borrowed_by`, `book_qrcode`, `borrowed_date`, `due_date`, `status`, `verify_by`, `acknowledge_by`, `returned_date`, `status_count`) VALUES
-(1, 'jj_student', NULL, 'mathmath', '2022-06-01', '2022-06-01', 'Returned', 'jj', 'jj_admin', '2022-06-01', '0'),
-(2, 'jj_student', NULL, 'mathmath', '2022-06-01', '2022-06-01', 'Returned', 'jj', 'jj_admin', '2022-06-01', '0');
+(2, 'jj_student', NULL, 'mathmath', '2022-06-02', '2022-06-02', 'Returned', 'jj', 'jj_admin', '2022-06-02', '0'),
+(3, 'jj_student', NULL, 'mathmath', '2022-06-02', '2022-06-01', 'Borrow', 'jj', NULL, NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -135,16 +134,15 @@ CREATE TABLE `borrower_details` (
   `gender` varchar(50) DEFAULT NULL,
   `contact_no` varchar(50) DEFAULT NULL,
   `course_year` varchar(50) DEFAULT NULL,
-  `qr_id` varchar(50) DEFAULT NULL,
-  `points` varchar(20) DEFAULT NULL
+  `points` varchar(20) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `borrower_details`
 --
 
-INSERT INTO `borrower_details` (`id`, `borrowers_id`, `full_name`, `gender`, `contact_no`, `course_year`, `qr_id`, `points`) VALUES
-(1, 'jj_student', 'jj', 'Male', '00000', 'bsit', 'jj_student', '46');
+INSERT INTO `borrower_details` (`id`, `borrowers_id`, `full_name`, `gender`, `contact_no`, `course_year`, `points`) VALUES
+(1, 'jj_student', 'jj', 'Male', '00000', 'bsit', '48');
 
 -- --------------------------------------------------------
 
@@ -316,13 +314,13 @@ ALTER TABLE `book_details`
 -- AUTO_INCREMENT for table `borrowed_books`
 --
 ALTER TABLE `borrowed_books`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `borrower_details`
 --
 ALTER TABLE `borrower_details`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `how_to_borrow`

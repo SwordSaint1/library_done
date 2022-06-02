@@ -60,7 +60,7 @@
                 <table class="table table-head-fixed text-nowrap table-hover" id="">
                 <thead style="text-align:center;">
                     <th>#</th>
-                    <th>Acquisition No</th>
+                    <th>Accession No</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Author</th>

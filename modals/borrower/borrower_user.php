@@ -32,9 +32,6 @@
             <div class="col-4">
               <label>Course / Year:</label> <input type="text" name="course_user" id="course_user" class="form-control" autocomplete="off">
             </div>
-            <div class="col-4">
-              <label>QR:</label> <input type="text" name="qr_user" id="qr_user" class="form-control" autocomplete="off">
-            </div>
         </div>
       </div>
       <div class="modal-footer">

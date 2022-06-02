@@ -1,4 +1,13 @@
 <script type="text/javascript">
+$(document).ready(function(){
+load_borrower_penalty();
+load_borrower();
+});
+
+const load_borrowers =()=>{
+	load_borrower_penalty();
+load_borrower();
+}
 
 const load_borrower =()=>{
 	var full_name = document.getElementById('full_name_manage').value;
@@ -16,13 +25,28 @@ const load_borrower =()=>{
    });
 }
 
+const load_borrower_penalty =()=>{
+	var full_name = document.getElementById('full_name_manage').value;
+ 
+	$.ajax({
+      url: '../../process/admin/manage.php',
+                type: 'POST',
+                cache: false,
+                data:{
+                    method: 'fetch_borrower_user_penalty',
+                    full_name:full_name
+                },success:function(response){
+                   document.getElementById('list_of_borrowers_penalty').innerHTML = response;
+                }
+   });
+}
+
 const register_borrower =()=>{
 	var borrowers_id = document.getElementById('borrow_id_user').value;
 	var full_name = document.getElementById('full_name_user').value;
 	var gender = document.getElementById('gender_user').value;
 	var contact_no = document.getElementById('contact_no_user').value;
 	var course = document.getElementById('course_user').value;
-	var qr = document.getElementById('qr_user').value;
 
 	if (borrowers_id == '') {
 		swal('Information','Please Input Borrower ID', 'info');
@@ -35,8 +59,6 @@ const register_borrower =()=>{
 		swal('Information','Please Input Contact No', 'info');
 	}else if(course == ''){
 		swal('Information','Please Input Course / Year', 'info');
-	}else if(qr == ''){
-		swal('Information','Please Input QR', 'info');
 	}
 	else{
 
@@ -50,8 +72,7 @@ const register_borrower =()=>{
 										full_name:full_name,
 										gender:gender,
 										contact_no:contact_no,
-										course:course,
-										qr:qr
+										course:course
                 },success:function(response){
                   
                   if (response == 'Borrower ID Already Used') {
@@ -76,9 +97,8 @@ const get_borrower_details =(param)=>{
     var gender = string[3];
     var contact_no = string[4];
     var course_year = string[5];
-    var qr_id = string[6];
-    var penalty = string[7];
-    var points = string[8];
+    var points = string[6];
+    console.log(param);
 
 document.getElementById('id_borrow_user_update').value = id;
 document.getElementById('borrow_id_user_update').value = borrowers_id;
@@ -86,8 +106,6 @@ document.getElementById('full_name_user_update').value = full_name;
 document.getElementById('gender_user_update').value = gender;
 document.getElementById('contact_no_user_update').value = contact_no;
 document.getElementById('course_user_update').value = course_year; 
-document.getElementById('qr_user_update').value = qr_id; 
-document.getElementById('penalty_user_update').value = penalty; 
 document.getElementById('points_user_update').value = points; 
 }
 
@@ -98,7 +116,6 @@ const update_borrower =()=>{
 	var gender = document.getElementById('gender_user_update').value;
 	var contact_no = document.getElementById('contact_no_user_update').value;
 	var course_year = document.getElementById('course_user_update').value;
-	var qr_id = document.getElementById('qr_user_update').value;
 
 	$.ajax({
       url: '../../process/admin/manage.php',
@@ -111,8 +128,7 @@ const update_borrower =()=>{
 										full_name:full_name,
 										gender:gender,
 										contact_no:contact_no,
-										course_year:course_year,
-										qr_id:qr_id
+										course_year:course_year
                 },success:function(response){
                   
                   if (response == 'success') {
@@ -134,7 +150,6 @@ const delete_borrower =()=>{
 	var gender = document.getElementById('gender_user_update').value;
 	var contact_no = document.getElementById('contact_no_user_update').value;
 	var course_year = document.getElementById('course_user_update').value;
-	var qr_id = document.getElementById('qr_user_update').value;
 
 	$.ajax({
       url: '../../process/admin/manage.php',
@@ -147,8 +162,7 @@ const delete_borrower =()=>{
 										full_name:full_name,
 										gender:gender,
 										contact_no:contact_no,
-										course_year:course_year,
-										qr_id:qr_id
+										course_year:course_year
                 },success:function(response){
                   
                   if (response == 'success') {

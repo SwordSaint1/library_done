@@ -50,13 +50,53 @@
                     </div>
                      <div class="col-9">
                       <span style="visibility:hidden;">.</span>
-                      <p style="text-align:right;"><a href="#" class="btn btn-primary" onclick="load_borrower()">Search <i class="fa fa-search"></a></i></p>
+                      <p style="text-align:right;"><a href="#" class="btn btn-primary" onclick="load_borrowers()">Search <i class="fa fa-search"></a></i></p>
                     </div>
                   </div>
                   <br>
                   <div class="row">
-                    <div class="col-12">
-                       <div class="card-body table-responsive p-0" style="height: 420px;">
+                    <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+
+                   <li class="nav-item"><a class="nav-link active" href="#borrower_list" data-toggle="tab">Borrower List</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#borrower_penalty_list" data-toggle="tab">List of Borrower's with Penalty</a></li>
+                </ul>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content">
+                
+               
+
+                  <div class="tab-pane active" id="borrower_list">
+                    <form class="form-horizontal">
+                        <div class="card-body table-responsive p-0" style="height: 420px;">
+                <table class="table table-head-fixed text-nowrap table-hover" id="">
+                <thead style="text-align:center;">
+                    <th>#</th>
+                    <th>Borrower's ID</th>
+                    <th>Full Name</th>
+                    <th>Gender</th>
+                    <th>Contact No</th>
+                    <th>Course / Year</th>
+                    <th>Points</th>
+            </thead>
+            <tbody id="list_of_borrowers" style="text-align:center;"></tbody>
+                </table>
+              </div>
+                     
+                     
+                    
+                    </form>
+                  </div>
+                  <!-- /.tab-pane -->
+
+                   <!-- /.tab-pane -->
+
+                  <div class="tab-pane" id="borrower_penalty_list">
+                    <form class="form-horizontal">
+                        <div class="card-body table-responsive p-0" style="height: 420px;">
                 <table class="table table-head-fixed text-nowrap table-hover" id="">
                 <thead style="text-align:center;">
                     <th>#</th>
@@ -68,10 +108,10 @@
                     <th>Penalty</th>
                     <th>Points</th>
             </thead>
-            <tbody id="list_of_borrowers" style="text-align:center;"></tbody>
+            <tbody id="list_of_borrowers_penalty" style="text-align:center;"></tbody>
                 </table>
               </div>
-                    </div>
+                    </form>
                   </div>
                 </div>
                 <!-- /.card-body -->

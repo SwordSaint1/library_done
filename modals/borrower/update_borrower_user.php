@@ -33,18 +33,11 @@
             <div class="col-4">
               <label>Course / Year:</label> <input type="text" name="course_user_update" id="course_user_update" class="form-control" autocomplete="off">
             </div>
-            <div class="col-4">
-              <label>QR:</label> <input type="text" name="qr_user_update" id="qr_user_update" class="form-control" autocomplete="off">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-              <label>Penalty:</label> <input type="text" name="penalty_user_update" id="penalty_user_update" class="form-control" disabled>
-            </div>
-            <div class="col-4">
+               <div class="col-4">
               <label>Points:</label> <input type="text" name="points_user_update" id="points_user_update" class="form-control" disabled>
             </div>
         </div>
+       
       </div>
       <div class="modal-footer">
         <a href="#" class="btn btn-danger" onclick="delete_borrower()">Delete Borrower</a>

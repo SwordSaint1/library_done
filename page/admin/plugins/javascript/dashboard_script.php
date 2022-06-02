@@ -30,17 +30,34 @@ const get_announcement_details =(param)=>{
     var date_announce = string[3];
     var image = '../../process/admin/' + string[4];
 
-    console.log(image)
 
 document.getElementById('id_announcement_update').value = id;
-// document.getElementById('files_update').value = file_name;
-//INPUT FILE SHIT
+
 
 $('#preview_announce_img').attr('src',image)
 
 document.getElementById('description_announcement_update').value = announcement_description;
 document.getElementById('date_announce_update').value = date_announce;
-// document.getElementById('image_update').value = image;
-
 }
+
+const delete_announcement =()=>{
+    var id = document.getElementById('id_announcement_update').value;
+    $.ajax({
+        url: '../../process/admin/announcement.php',
+                type: 'POST',
+                cache: false,
+                data:{
+                    method: 'delete_announcement',
+                    id:id
+                },success:function(response){
+                   if (response == 'success') {
+                    swal('Information','Successfully Deleted!','info');
+                    search_announcement();
+                   }else{
+                    swal('Error','Error','error');
+                   }
+                }
+    });
+}
+
 </script>

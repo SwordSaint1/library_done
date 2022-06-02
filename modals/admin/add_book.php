@@ -11,7 +11,7 @@
       <div class="modal-body">
          <div class="row">
            <div class="col-3">
-              <label>Acquisition No:</label> <input type="text" name="acquisition_no_add" id="acquisition_no_add" class="form-control" autocomplete="off">
+              <label>Accession No:</label> <input type="text" name="acquisition_no_add" id="acquisition_no_add" class="form-control" autocomplete="off">
             </div>
           <div class="col-3">
               <label>Book Title: &nbsp;&nbsp;</label> <input type="text" name="book_title_add" id="book_title_add" class="form-control" autocomplete="off">

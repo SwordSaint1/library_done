@@ -29,5 +29,15 @@ if ($method == 'fetch_announcement') {
 	}
 }
 
+if ($method == 'delete_announcement') {
+	$id = $_POST['id'];
+	$query = "DELETE FROM announcement WHERE id = '$id'";
+	$stmt = $conn->prepare($query);
+	if ($stmt->execute()) {
+		echo 'success';
+	}else{
+		echo 'error';
+	}
+}
 $conn = NULL;
 ?>
