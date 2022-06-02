@@ -73,7 +73,7 @@
                   <?php 
                     require '../../process/conn.php';
                   $query ="SELECT sum(datediff('$server_date_only',borrowed_books.due_date) * 10) as penalty,borrower_details.points,borrower_details.full_name,borrower_details.borrowers_id,
-    borrower_details.gender,borrower_details.contact_no,borrower_details.course_year,borrower_details.qr_id,borrower_details.id FROM borrowed_books LEFT JOIN borrower_details ON borrower_details.borrowers_id = borrowed_books.borrowers_id WHERE borrowed_books.status = 'Borrow' AND borrower_details.borrowers_id = '$name' GROUP BY borrowed_books.borrowers_id";
+    borrower_details.gender,borrower_details.contact_no,borrower_details.course_year,borrower_details.id FROM borrowed_books LEFT JOIN borrower_details ON borrower_details.borrowers_id = borrowed_books.borrowers_id WHERE borrowed_books.status = 'Borrow' AND borrower_details.borrowers_id = '$name' GROUP BY borrowed_books.borrowers_id";
 
                   $stmt2 = $conn->prepare($query);
                   $stmt2->execute();

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2022 at 05:59 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.25
+-- Generation Time: Jun 02, 2022 at 11:50 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -90,8 +90,8 @@ CREATE TABLE `book_details` (
 --
 
 INSERT INTO `book_details` (`id`, `title`, `description`, `author`, `date_publish`, `category`, `book_type`, `book_qrcode`, `book_qty`, `location`, `shelf`, `acquisition_no`) VALUES
-(8, 'science', 'science101', 'jj', '2022-05-31', 'sample', 'sample', 'science12345jj', '5', 'a', 'a1', '12345'),
-(10, 'math', 'math101', 'math', '2022-05-27', 'sample', 'sample', 'mathmath', '2', 'b', 'b', '123');
+(8, 'science', 'science101', 'jj', '2022-05-31', 'sample', 'sample', 'science12345jj', '4', 'a', 'a1', '12345'),
+(10, 'math', 'math101', 'math', '2022-05-27', 'sample', 'sample', 'mathmath', '3', 'b', 'b', '123');
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,8 @@ CREATE TABLE `borrowed_books` (
 
 INSERT INTO `borrowed_books` (`id`, `borrowers_id`, `borrowed_by`, `book_qrcode`, `borrowed_date`, `due_date`, `status`, `verify_by`, `acknowledge_by`, `returned_date`, `status_count`) VALUES
 (2, 'jj_student', NULL, 'mathmath', '2022-06-02', '2022-06-02', 'Returned', 'jj', 'jj_admin', '2022-06-02', '0'),
-(3, 'jj_student', NULL, 'mathmath', '2022-06-02', '2022-06-01', 'Borrow', 'jj', NULL, NULL, '1');
+(3, 'jj_student', NULL, 'mathmath', '2022-06-02', '2022-06-01', 'Returned', 'jj', 'jj_admin', '2022-06-02', '0'),
+(4, 'jj_student', NULL, 'science12345jj', '2022-06-02', '2022-06-01', 'Borrow', 'jj', NULL, NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -142,7 +143,8 @@ CREATE TABLE `borrower_details` (
 --
 
 INSERT INTO `borrower_details` (`id`, `borrowers_id`, `full_name`, `gender`, `contact_no`, `course_year`, `points`) VALUES
-(1, 'jj_student', 'jj', 'Male', '00000', 'bsit', '48');
+(1, 'jj_student', 'jj', 'Male', '00000', 'bsit', '45'),
+(5, 'sample', 'sample', 'Male', '099999', 'bsit', '0');
 
 -- --------------------------------------------------------
 
@@ -314,13 +316,13 @@ ALTER TABLE `book_details`
 -- AUTO_INCREMENT for table `borrowed_books`
 --
 ALTER TABLE `borrowed_books`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `borrower_details`
 --
 ALTER TABLE `borrower_details`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `how_to_borrow`
